@@ -1,6 +1,7 @@
 import express from 'express'
 import mongoose from 'mongoose';
 import dotenv from 'dotenv'
+import userRoutes from './routes/user.route.js'
 
 dotenv.config();
 
@@ -18,6 +19,9 @@ const app = express();
 app.get('/', (req, res) => {
     res.send("Welcome at port")
 })
+
+app.use('/api/user', userRoutes);
+
 
 app.listen('8080', () => {
     console.log("server starts running at port 8080");
