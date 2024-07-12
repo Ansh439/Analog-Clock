@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from 'react-router-dom';
+import OAuth from '../components/OAuth';
 
 export default function Signin() {
     const [formData, setFormData] = useState({});
@@ -71,7 +71,7 @@ export default function Signin() {
                     id='password'
                 />
             </div>
-        <div class="flex justify-end mt-[14px]">
+        <div className="flex justify-end mt-[14px]">
             <span style={{color:'#FE8C00'}}>Forgot password?</span>        
         </div>
 
@@ -84,15 +84,15 @@ export default function Signin() {
         </button>
         </form>
 
-        <div class="relative flex py-5 items-center">
-            <div class="flex-grow border" style={{color:'#878787'}}></div>
-            <span class="flex-shrink mx-4 inter-f5" style={{color:'#878787'}}>Or sign in with</span>
-            <div class="flex-grow border-t" style={{color:'#878787'}}></div>
+        <div className="relative flex py-5 items-center">
+            <div className="flex-grow border" style={{color:'#878787'}}></div>
+            <span className="flex-shrink mx-4 inter-f5" style={{color:'#878787'}}>Or sign in with</span>
+            <div className="flex-grow border-t" style={{color:'#878787'}}></div>
         </div>
 
         <div className='w-full'>
-            <div className='h-[40px] w-[40px] mx-auto flex items-center justify-center border-2 rounded-[50%]'>
-                <FcGoogle size={'24px'} />
+            <div type='button' className='h-[40px] w-[40px] mx-auto flex items-center justify-center border-2 rounded-[50%]'>
+              <OAuth />
             </div>
         </div>
 

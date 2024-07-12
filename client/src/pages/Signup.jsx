@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from 'react-router-dom';
+import OAuth from '../components/OAuth';
 
 export default function Signup() {
     const [formData, setFormData] = useState({});
@@ -103,8 +103,8 @@ export default function Signup() {
         </div>
 
         <div className='w-full'>
-            <div className='h-[40px] w-[40px] mx-auto flex items-center justify-center border-2 rounded-[50%]'>
-                <FcGoogle size={'24px'} />
+            <div type='button' className='h-[40px] w-[40px] mx-auto flex items-center justify-center border-2 rounded-[50%]'>
+              <OAuth />
             </div>
         </div>
 
