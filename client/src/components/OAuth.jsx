@@ -3,9 +3,12 @@ import { FcGoogle } from "react-icons/fc";
 import {GoogleAuthProvider, signInWithPopup, getAuth} from 'firebase/auth'
 import { app } from '../firebase.js';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux'
+import { signinFailure, signinSuccess } from '../redux/user/userSlice.js'
 
 export default function OAuth() {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const handleClick = async() => {
         const provider = new GoogleAuthProvider();
         provider.setCustomParameters({prompt: 'select_account'})
@@ -25,10 +28,11 @@ export default function OAuth() {
             const data = await res.json();
     
             if(res.ok){
-              navigate('/');
+              dispatch(signinSuccess(data));
+              navigate('/tracking');
             }
           }catch(error){
-            console.log(error);
+            return dispatch(signinFailure(error.message));
           }
     }
   return (

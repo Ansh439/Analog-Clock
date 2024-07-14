@@ -35,7 +35,7 @@ export default function Signin() {
             }
             if(res.ok){
                 dispatch(signinSuccess(data))
-                navigate('/');
+                navigate('/tracking');
             }
 
         } catch (error) {
