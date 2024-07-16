@@ -63,4 +63,19 @@
     line-height: 38px;
   }
 
-  
+  .react-clock__face {
+    background-color: #FEE8CC;
+  }
+
+  .react-clock__face:hover {
+    background-color: #FE8C00;
+    cursor: pointer;
+  }
+
+  .react-clock__mark__body {
+    background-color: #4C2A00;
+  }
+
+  .react-clock__hand__body {
+    background-color: #4C2A00;
+  }
