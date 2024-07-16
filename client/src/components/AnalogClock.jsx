@@ -4,6 +4,8 @@ import Clock from 'react-clock';
 import { FaShareAlt } from "react-icons/fa";
 import 'react-clock/dist/Clock.css';
 
+
+
 export default function AnalogClock() {
 
   const [speed, setSpeed] = useState(1000);
@@ -61,26 +63,26 @@ export default function AnalogClock() {
   }
 
   return (
-    <div className='flex flex-col lg:flex-row justify-center items-center gap-8 h-screen'>
-      <Clock value={time} size={'20rem'} />
-      <div>
-        <p>Current Time: {time.toLocaleTimeString()}</p>
-        <p>Target Time: {targetTime.toLocaleTimeString()}</p>
-        <p>Update Interval: {speed} milliseconds</p>
-        <input
-          type="range"
-          min="100"
-          max="5000"
-          step="100"
-          value={speed}
-          onChange={handleChange}
-          className=' bg-[#FE8C00]'
-        />
+      <div className='flex flex-col lg:flex-row justify-center items-center gap-8 h-screen'>
+        <Clock value={time} size={'20rem'} />
+        <div>
+          <p>Current Time: {time.toLocaleTimeString()}</p>
+          <p>Target Time: {targetTime.toLocaleTimeString()}</p>
+          <p>Update Interval: {speed} milliseconds</p>
+          <input
+            type="range"
+            min="100"
+            max="5000"
+            step="100"
+            value={speed}
+            onChange={handleChange}
+            className=' bg-[#FE8C00]'
+          />
+        </div>
+        <div>
+          <button className='border p-4 rounded-full bg-[#FEE8CC] hover:border-[#FE8C00] hover:shadow-xl' onClick={handleClick}><FaShareAlt /></button>
+        </div>
       </div>
-      <div>
-        <button className='border p-4 rounded-full bg-[#FEE8CC] hover:border-[#FE8C00] hover:shadow-xl' onClick={handleClick}><FaShareAlt /></button>
-      </div>
-    </div>
   );
 
 }

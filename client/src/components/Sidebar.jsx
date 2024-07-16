@@ -21,7 +21,7 @@ export default function Sidebar() {
   return (
     <>
         
-        <div className= {`md:hidden flex w-full justify-between p-3 text-center items-center ${openTopNav && 'bg-[#FEE8CC]'} duration-300`}> 
+        <div className= {`md:hidden flex w-full justify-between p-3 text-center items-center ${openTopNav && 'bg-[#FEE8CC]'} duration-300 mb-2`}> 
             <GiHamburgerMenu size={'32'} onClick={() => setOpenTopNav(!openTopNav)} className={`hover:cursor-pointer ${!openTopNav && "rotate-[360deg]"} duration-300`} />
             <h1 className={`origin-left font-medium text-xl ${!open && "scale-0"} translate-y-0 duration-300`}>Welcome <span className='text-[#FE8C00] hover:underline'>{currentUser.username}</span></h1>
             <button className={`w-24 h-12 rounded-xl text-white bg-[#FE8C00] hover:bg-[#CB7000]`}>Sign Out</button>
