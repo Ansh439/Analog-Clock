@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import {BsArrowLeftShort} from 'react-icons/bs'
 import {RiDashboardFill} from 'react-icons/ri'
-import { GoSignOut } from "react-icons/go";
 import { CgHello } from "react-icons/cg";
+import { FaHome, FaSignOutAlt } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 import {useDispatch, useSelector} from 'react-redux'
 import {Link, useNavigate} from 'react-router-dom'
@@ -16,7 +16,7 @@ export default function Sidebar() {
     const navigate = useNavigate();
     const menu = [
         {title : "Tracker"},
-        {title : "Signout"}
+        {title : "Signout"},
     ]
     const {currentUser} = useSelector(state => state.user);
 
@@ -69,17 +69,20 @@ export default function Sidebar() {
             </div>
 
             <ul className='pt-5'>
-                {menu.map((menu, index) => (
-                    <li key={index} className={`text-sm flex items-center gap-x-4 cursor-pointer p-2 hover:bg-[#FE8C00] rounded-md mt-2 ${menu.title === 'Tracker' && "bg-[#FE8C00]"} hover:bg-[#CBB9A3] hover:cursor-pointer`}>
-                        {(menu.title === "Tracker") && <span className='text-2xl block float-left'>
-                            <RiDashboardFill />
-                        </span>}
-                        {(menu.title === "Signout") && <span className=' text-2xl block float-left' onClick={handleSignout}>
-                            <GoSignOut />
-                        </span>}
-                        <span className={` text-base font-medium flex-1 ${!open && "hidden"}`}>{menu.title}</span>
-                    </li>
-                ))}
+                <li className={`text-sm flex items-center gap-x-4 cursor-pointer p-2  rounded-md mt-2 hover:bg-[#CBB9A3] hover:cursor-pointer`} onClick={() => navigate('/')}>
+                    <FaHome /> 
+                    <span className={` text-base font-medium flex-1 ${!open && "hidden"}`}>Home</span>
+                </li>
+
+                <li className={`text-sm flex items-center gap-x-4 cursor-pointer p-2  rounded-md mt-2 bg-[#FE8C00] hover:bg-[#CBB9A3] hover:cursor-pointer`}>
+                    <RiDashboardFill />
+                    <span className={` text-base font-medium flex-1 ${!open && "hidden"}`}>Tracker</span>
+                </li>
+
+                <li className={`text-sm flex items-center gap-x-4 cursor-pointer p-2  rounded-md mt-2  hover:bg-[#CBB9A3] hover:cursor-pointer`} onClick={handleSignout}>
+                    <FaSignOutAlt /> 
+                    <span className={` text-base font-medium flex-1 ${!open && "hidden"}`}>SignOut</span>
+                </li>
             </ul>
         </div>
     </>

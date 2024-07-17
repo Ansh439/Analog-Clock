@@ -64,7 +64,7 @@ export default function AnalogClock() {
 
   return (
       <div className='flex flex-col lg:flex-row justify-center items-center text-center gap-8'>
-        <Clock value={time} size={'20rem'} />
+        <Clock value={time} size={'20rem'} className={"hover:rotate-[360deg] duration-300"} renderNumbers={true}/>
         <div>
           <p>Current Time: {time.toLocaleTimeString()}</p>
           <p>Target Time: {targetTime.toLocaleTimeString()}</p>
@@ -76,7 +76,7 @@ export default function AnalogClock() {
             step="100"
             value={speed}
             onChange={handleChange}
-            className=' bg-[#FE8C00]'
+            className='w-full h-2 bg-[#4C2A00] rounded-lg appearance-none cursor-pointer dark:bg-gray-700'
           />
         </div>
         <div>

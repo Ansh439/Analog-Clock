@@ -24,6 +24,17 @@
     line-height: 20px;
   }
 
+.inter-f4 {
+    font-family: "Inter", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings:
+      "slnt" 0;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
 
   .horizontal-slider {
     width: 100%;
@@ -79,3 +90,23 @@
   .react-clock__hand__body {
     background-color: #4C2A00;
   }
+
+  @keyframes slide-in-right {
+    0% {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+
+  .slide-in-right {
+    animation: slide-in-right 300ms ease-out forwards;
+  }
+
+  .rotate-y-180 {
+    @apply transform;
+    transform: rotateY(180deg);
+}

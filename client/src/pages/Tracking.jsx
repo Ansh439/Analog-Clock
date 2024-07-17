@@ -12,7 +12,7 @@ export default function Tracking() {
         <div className='px-3 mt-5 flex justify-center h-[30vh] font-semibold text-center'>
           <Quote />
         </div>
-        <div className='flex flex-col justify-center items-center h-[70vh]'>
+        <div className='flex flex-col items-center h-[70vh]'>
           <AnalogClock />
         </div>
       </div>
