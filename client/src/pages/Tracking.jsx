@@ -8,10 +8,12 @@ export default function Tracking() {
   return (
     <div className='flex flex-col md:flex-row'>
       <Sidebar />
-      <div className='w-full h-screen flex flex-col justify-center items-center'>
-        <AnalogClock />
-        <div className='mb-40 p-3'>
+      <div className='w-full h-[100vh] flex flex-col md:justify-center '>
+        <div className='px-3 mt-5 flex justify-center h-[30vh] font-semibold text-center'>
           <Quote />
+        </div>
+        <div className='flex flex-col justify-center items-center h-[70vh]'>
+          <AnalogClock />
         </div>
       </div>
     </div>

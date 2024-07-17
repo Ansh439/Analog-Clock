@@ -63,7 +63,7 @@ export default function AnalogClock() {
   }
 
   return (
-      <div className='flex flex-col lg:flex-row justify-center items-center gap-8 h-screen'>
+      <div className='flex flex-col lg:flex-row justify-center items-center text-center gap-8'>
         <Clock value={time} size={'20rem'} />
         <div>
           <p>Current Time: {time.toLocaleTimeString()}</p>
