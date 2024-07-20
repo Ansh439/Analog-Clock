@@ -18,14 +18,17 @@ const userSlice = createSlice({
         signinSuccess: (state, action) => {
             state.currentUser = action.payload,
             state.loading = false,
+            state.speed = 1000,
             state.error = null
         },
         signinFailure: (state, action) => {
             state.loading = false,
+            state.speed = 1000,
             state.error = action.payload
         },
         signoutSuccess: (state) => {
             state.currentUser = null,
+            state.speed = 1000,
             state.error = null,
             state.loading = false   
         },

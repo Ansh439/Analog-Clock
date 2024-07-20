@@ -13,6 +13,7 @@ mongoose.connect(process.env.MONGO).then(
         console.log("mongoose Connected!!")
     }
 ).catch((err) => {
+    console.log("mongooose uri is: "+process.env.MONGO);
     console.log(err);
 });
 
