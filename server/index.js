@@ -14,15 +14,18 @@ mongoose.connect(process.env.MONGO).then(
     console.log(err);
 });
 
+const PORT =  process.env.PORT || '8080';
+
 
 const app = express();
 app.use(express.json());
+
 
 app.get('/', (req, res) => {
     res.send("Welcome at port")
 })
 
-app.listen('8080', () => {
+app.listen(PORT, () => {
     console.log("server starts running at port 8080");
 })
 
