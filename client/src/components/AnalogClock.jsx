@@ -3,12 +3,16 @@ import { useEffect, useState } from 'react';
 import Clock from 'react-clock';
 import { FaShareAlt } from "react-icons/fa";
 import 'react-clock/dist/Clock.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeSpeed } from '../redux/user/userSlice';
+import Slider from './Slider';
 
 
 
 export default function AnalogClock() {
 
-  const [speed, setSpeed] = useState(1000);
+  const dispatch = useDispatch();
+  const {speed} = useSelector(state => state.user);
   const [time, setTime] = useState(new Date());
   const [targetTime, setTargetTime] = useState(new Date());
 
@@ -18,7 +22,7 @@ export default function AnalogClock() {
       const state = queryParams.get('state');
       if (state) {
         const { speed } = JSON.parse(atob(state));
-        setSpeed(speed);
+        dispatch(changeSpeed(speed));
       }
     } catch (error) {
       console.log(error);
@@ -36,6 +40,7 @@ export default function AnalogClock() {
         const newTime = new Date(prevTime.getTime() - 1000);
         if (newTime <= targetTime) {
           clearInterval(id);
+          alert('Clock time is ended... refresh the page to start again')
           return targetTime;
         }
         return newTime;
@@ -46,9 +51,7 @@ export default function AnalogClock() {
   }, [speed, targetTime]);
 
 
-  const handleChange = (event) => {
-    setSpeed(Number(event.target.value));
-  };
+  
 
   const handleClick = (e) => {
     try {
@@ -63,25 +66,22 @@ export default function AnalogClock() {
   }
 
   return (
-      <div className='flex flex-col lg:flex-row justify-center items-center text-center gap-8'>
-        <Clock value={time} size={'20rem'} className={"hover:rotate-[360deg] duration-300"} renderNumbers={true}/>
-        <div>
-          <p>Current Time: {time.toLocaleTimeString()}</p>
-          <p>Target Time: {targetTime.toLocaleTimeString()}</p>
-          <p>Update Interval: {speed} milliseconds</p>
-          <input
-            type="range"
-            min="100"
-            max="5000"
-            step="100"
-            value={speed}
-            onChange={handleChange}
-            className='w-full h-2 bg-[#4C2A00] rounded-lg appearance-none cursor-pointer dark:bg-gray-700'
-          />
+      <div className='flex flex-col gap-8 md:gap-12'>
+        <div className='flex flex-col lg:flex-row justify-center items-center text-center gap-8'>
+          <Clock value={time} size={'20rem'} className={"hover:rotate-[360deg] duration-300"} renderNumbers={true}/>
+          <div className='inter-f5'>
+            <p className='font-semibold hover:underline cursor-pointer'>Current Time: <span className='font-normal'>{time.toLocaleTimeString()}</span></p>
+            <p className='font-semibold hover:underline cursor-pointer '>Target Time: <span className='font-normal'>{targetTime.toLocaleTimeString()}</span></p>
+            <p className='font-semibold hover:underline cursor-pointer '>Update Interval: <span className='font-normal'>{speed} milliseconds</span></p>
+            
+          </div>
+          <div>
+            <button className='border p-4 rounded-full bg-[#FEE8CC] hover:border-[#FE8C00] hover:shadow-xl' onClick={handleClick}><FaShareAlt /></button>
+          </div>
         </div>
-        <div>
-          <button className='border p-4 rounded-full bg-[#FEE8CC] hover:border-[#FE8C00] hover:shadow-xl' onClick={handleClick}><FaShareAlt /></button>
-        </div>
+        
+          <Slider />
+        
       </div>
   );
 

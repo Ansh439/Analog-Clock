@@ -4,6 +4,7 @@ const initialState = {
     currentUser: null,
     error: null,
     loading: false,
+    speed: 1000,
 }
 
 const userSlice = createSlice({
@@ -27,10 +28,12 @@ const userSlice = createSlice({
             state.currentUser = null,
             state.error = null,
             state.loading = false   
+        },
+        changeSpeed: (state, action) => {
+            state.speed = action.payload
         }
-
     }
 })
 
-export const {signinStart, signinSuccess, signinFailure, signoutSuccess} = userSlice.actions;
+export const {signinStart, signinSuccess, signinFailure, signoutSuccess, changeSpeed} = userSlice.actions;
 export default userSlice.reducer;

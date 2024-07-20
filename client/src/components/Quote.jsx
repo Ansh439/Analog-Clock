@@ -30,7 +30,7 @@ export default function Quote() {
    }, [])
 
   return (
-        <div className='flex justify-center items-center'>
+        <div className='flex justify-center items-center inter-f5'>
             <h1>{quote ? quote : "Loading Quotes..."}</h1>
         </div>
     )

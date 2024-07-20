@@ -19,7 +19,10 @@ export default function Signup() {
         setErrorMessage(null)
         if(!formData.username || !formData.email || !formData.password){
             setErrorMessage("Please Fill out all the fields")
+            isLoading(false)
+            return ;
         }
+
         try {
             const res = await fetch('/api/auth/signup', {
                 method: 'POST',
@@ -40,7 +43,6 @@ export default function Signup() {
             isLoading(false)
         }
     }
-    console.log(formData);
     return (
     <>
         <div className='flex flex-col w-[327px] h-[128px] mt-[76px] md:mt-12 gap-2 mx-auto'>
@@ -84,7 +86,9 @@ export default function Signup() {
             <div className="flex items-center mt-[14px]">
                 <input 
                     type="checkbox"
+                    id="termsAccepted"
                     style={{accentColor:'#FE8C00'}}
+                    required
                 />
                 <label className="ms-2 inter-f5">I Agree with <span className='inter-f6' style={{fontSize:'14px', lineHeight:'20px',color:'#FE8C00'}}>Terms of Service</span> and <span className='inter-f6' style={{fontSize:'14px', lineHeight:'20px',color:'#FE8C00'}}>Privacy Policy</span></label>
             </div>
@@ -111,6 +115,14 @@ export default function Signup() {
         <div className='w-full mt-6'>
             <h2 className='inter-f5 h-[24px] text-center'>Have an account? <span className='inter-f6' style={{fontSize:'14px', lineHeight:'20px',color:'#FE8C00'}}><Link to={'/signin'}>Sign-in</Link></span></h2>
         </div>
+
+        {
+            errorMessage && (
+                <div className='mt-3 p-4 rounded-lg flex text-center justify-center w-full bg-red-300 text-white border-2 border-red-700 '>
+                    <p>{errorMessage}</p>
+                </div>
+            )
+        }
 
         </div>
     </>

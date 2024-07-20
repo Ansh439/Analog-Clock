@@ -75,7 +75,7 @@ export default function Signin() {
             <span style={{color:'#FE8C00'}}>Forgot password?</span>        
         </div>
 
-        <button className='w-full h-[52px] mt-6 md:mt-3 rounded-[100px] p-4 text-white' style={{backgroundColor:'#FE8C00'}} type='submit' disabled={loading}>
+        <button className='w-full h-[52px] mt-6 md:mt-3 rounded-[100px] p-4 text-white cursor-pointer' style={{backgroundColor:'#FE8C00'}} type='submit' disabled={loading}>
             {
                 loading ? (
                   'Loading...'                    
@@ -103,7 +103,13 @@ export default function Signin() {
               </Link>
             </span></h2>
         </div>
-
+        {
+            error && (
+                <div className='mt-3 p-4 rounded-lg flex text-center justify-center w-full bg-red-300 text-white border-2 border-red-700 '>
+                    <p>{error}</p>
+                </div>
+            )
+        }
         </div>
     </>
   )
