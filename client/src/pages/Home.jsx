@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ProgressButton from "../assets/ProgressButton.png"
 import NextIcon from '../assets/NextIcon.png'
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { clearState } from '../redux/user/userSlice';
 const slides = [
   {
     image: 'https://s3-alpha-sig.figma.com/img/e088/8995/13a478aa6d3cc9bebac1c6fe29b1cf35?Expires=1722211200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Ex-qdvOG4CU7LscqCsVdIQizo9lnSnv-E9rGlsYXUEdib-ekFB2UxagXNaEaDC1yyqrMSlrAmmbeQUMx-fUHSZ7gXrW6K0homEaOboDVi1tO0CIQENlaUUZA6bsLtvFLTrx0S4SSse7jd87O8MXOvGvjJk7XO22wkK3Qbdke4W7RdIDlWEhof63uRZOMw9V5qkIHUG7E2ZDc~JvGdwvAdn7UvurZa9NPw1xB20eE4pTx~gOURNif~HZ2sjYyz1Qp1uVQMTw26ynY63m8YQWQGU3nX28L2oqi7wAvKhJnnYcA2lkt5kLw~jm5RokL~SHvMqwj1530qswV3~gfM6VHyA__',
@@ -29,6 +30,12 @@ export default function Home() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [animationClass, setAnimationClass] = useState('slide-in-right');
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+
+  useEffect(() => {
+    dispatch(clearState())
+  })
 
   const nextSlide = () => {
     setCurrentIndex((prevIndex) =>
@@ -43,10 +50,14 @@ export default function Home() {
   };
 
   const handleProgress = () => {
-      currentUser ? navigate('/tracking') : navigate('/signin');
+      currentUser ? (
+        navigate('/tracking') 
+      ): (
+        navigate('/signin')
+      );
   }
 
-  console.log(currentIndex);
+
 
   return (
     <div className="relative h-screen flex items-center justify-center">

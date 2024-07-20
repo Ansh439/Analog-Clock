@@ -1,6 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import OAuth from '../components/OAuth';
+import { useDispatch } from 'react-redux';
+import { clearState } from '../redux/user/userSlice';
 
 export default function Signup() {
     const [formData, setFormData] = useState({});
@@ -8,10 +10,17 @@ export default function Signup() {
     const [loading, isLoading] = useState(false);
 
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const handleChange = (e) => {
         setFormData({...formData, [e.target.id]: e.target.value.trim()})
     }
+
+    
+    useEffect(() => {
+        dispatch(clearState())
+    })
+
 
     const handleSubmit = async(e) => {
         e.preventDefault();

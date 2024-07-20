@@ -29,11 +29,17 @@ const userSlice = createSlice({
             state.error = null,
             state.loading = false   
         },
+        clearState: (state) => {
+            state.currentUser = null,
+            state.error = null,
+            state.loading = null,
+            state.speed = 1000
+        },
         changeSpeed: (state, action) => {
             state.speed = action.payload
         }
     }
 })
 
-export const {signinStart, signinSuccess, signinFailure, signoutSuccess, changeSpeed} = userSlice.actions;
+export const {signinStart, signinSuccess, signinFailure, signoutSuccess, changeSpeed, clearState} = userSlice.actions;
 export default userSlice.reducer;
